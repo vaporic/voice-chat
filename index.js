@@ -58,7 +58,7 @@ io.on("connection", function (socket) {
   console.log("the app is run in port 3000!");
 });*/
 
-https.createServer({
+http.createServer({
     key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
 }, app).listen(PORT, function(){
