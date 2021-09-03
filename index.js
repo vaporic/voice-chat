@@ -1,3 +1,4 @@
+const fs = require('fs');
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
@@ -53,6 +54,13 @@ io.on("connection", function (socket) {
     });
 });
 
-http.listen(3000, () => {
+/*http.listen(3000, () => {
   console.log("the app is run in port 3000!");
+});*/
+
+https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
+}, app).listen(PORT, function(){
+    console.log("My HTTPS server listening on port " + PORT + "...");
 });
