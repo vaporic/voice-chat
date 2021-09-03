@@ -23,6 +23,13 @@ app.get("/home" , (req , res)=>{
     res.render("index");
 });
 
+var server = https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
+}, app).listen(PORT, function(){
+    console.log("My HTTPS server listening on port " + PORT + "...");
+});
+
 io.sockets.on("connection", function (socket) {
     const socketId = socket.id;
     socketsStatus[socket.id] = {};
@@ -59,10 +66,3 @@ io.sockets.on("connection", function (socket) {
 /*http.listen(3000, () => {
   console.log("the app is run in port 3000!");
 });*/
-
-var server = https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
-}, app).listen(PORT, function(){
-    console.log("My HTTPS server listening on port " + PORT + "...");
-});
