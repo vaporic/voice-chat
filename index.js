@@ -6,6 +6,8 @@ const http = require("https").Server(app);
 const https = require('https');
 const io = require("socket.io")(http);
 
+const PORT = 3000;
+
 //To holding users information 
 const socketsStatus = {};
 
