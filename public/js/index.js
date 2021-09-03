@@ -19,7 +19,7 @@ const userStatus = {
   };
   
   //var socket = io("wss://softcodersteam.com:3000");
-  var socket = io.connect('https://softcodersteam.com:3000');
+  var socket = io.connect('//softcodersteam.com:3000');
   socket.emit("userInformation", userStatus);
   
   
