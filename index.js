@@ -19,7 +19,7 @@ app.set("view engine", "handlebars");
 //enable user access to public folder 
 app.use("/files", express.static("public"));
 
-app.get("/home" , (req , res)=>{
+app.get("/" , (req , res)=>{
     res.render("index");
 });
 
@@ -30,7 +30,7 @@ var server = https.createServer({
     console.log("My HTTPS server listening on port " + PORT + "...");
 });
 
-io.sockets.on("connection", function (socket) {
+io.on("connection", function (socket) {
     const socketId = socket.id;
     socketsStatus[socket.id] = {};
 
