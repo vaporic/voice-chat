@@ -3,6 +3,12 @@ const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
 const https = require('https');
+var server = https.createServer({
+    key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
+    cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
+}, app).listen(PORT, function(){
+    console.log("My HTTPS server listening on port " + PORT + "...");
+});
 var io = require('socket.io')(server);
 
 const PORT = 3000;
@@ -21,13 +27,6 @@ app.use("/files", express.static("public"));
 
 app.get("/" , (req , res)=>{
     res.render("index");
-});
-
-var server = https.createServer({
-    key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
-    cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
-}, app).listen(PORT, function(){
-    console.log("My HTTPS server listening on port " + PORT + "...");
 });
 
 io.on("connection", function (socket) {
