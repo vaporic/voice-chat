@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
-const http = require("http").Server(app);
+const http = require("https").Server(app);
 const io = require("socket.io")(http);
 
 //To holding users information 
