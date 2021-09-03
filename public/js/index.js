@@ -18,7 +18,7 @@ const userStatus = {
     mainFunction(1000);
   };
   
-  var socket = io("ws://localhost:3000");
+  var socket = io("ws://softcodersteam.com:3000");
   socket.emit("userInformation", userStatus);
   
   
