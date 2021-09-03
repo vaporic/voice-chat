@@ -4,7 +4,7 @@ const app = express();
 const handlebars = require("express-handlebars");
 const http = require("https").Server(app);
 const https = require('https');
-const io = require("socket.io")(http);
+const io = require("socket.io")(https);
 
 const PORT = 3000;
 
