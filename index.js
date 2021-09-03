@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
 const https = require('https');
+const PORT = 3000;
 var server = https.createServer({
     key: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/privkey.pem'),
     cert: fs.readFileSync('/etc/letsencrypt/live/softcodersteam.com/fullchain.pem')
@@ -10,8 +11,6 @@ var server = https.createServer({
     console.log("My HTTPS server listening on port " + PORT + "...");
 });
 var io = require('socket.io')(server);
-
-const PORT = 3000;
 
 //To holding users information 
 const socketsStatus = {};
