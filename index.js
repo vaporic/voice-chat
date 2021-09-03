@@ -2,7 +2,6 @@ const fs = require('fs');
 const express = require("express");
 const app = express();
 const handlebars = require("express-handlebars");
-const http = require("https").Server(app);
 const https = require('https');
 var io = require('socket.io')(server);
 
@@ -24,7 +23,7 @@ app.get("/home" , (req , res)=>{
     res.render("index");
 });
 
-io.on("connection", function (socket) {
+io.sockets.on("connection", function (socket) {
     const socketId = socket.id;
     socketsStatus[socket.id] = {};
 
